@@ -2,9 +2,9 @@ cloud_provider:
   name: aws
 nodes:
 # SSH key path
-ssh_key_path: ~/.ssh/your-rke.pem
+ssh_key_path: ~/.ssh/lukas-rke.pem
 # Name of the K8s Cluster
-cluster_name: your-rke
+cluster_name: lukas-rke
 services:
   kube-api:
     # IP range for any services created on Kubernetes

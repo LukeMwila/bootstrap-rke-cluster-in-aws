@@ -1,9 +1,9 @@
-data "aws_ami" "ubuntu" {
+data "aws_ami" "openSUSE" {
   most_recent = true
 
   filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+    values = ["openSUSE-Leap-15-2-v20200702-hvm-ssd-x86_64-*"]
   }
 
   filter {
@@ -11,13 +11,13 @@ data "aws_ami" "ubuntu" {
     values = ["hvm"]
   }
 
-  owners = ["099720109477"]
+  owners = ["679593333241"]
 }
 
 # EC2 Auto Scaling Group - Launch Template
 resource "aws_launch_template" "launch_template" {
   name_prefix   = var.name_prefix
-  image_id      = data.aws_ami.ubuntu.id
+  image_id      = data.aws_ami.openSUSE.id
   instance_type = var.ec2_instance_type
 
   vpc_security_group_ids = var.launch_template_security_group_ids

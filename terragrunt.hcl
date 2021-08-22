@@ -4,7 +4,7 @@ generate "provider" {
   contents = <<EOF
   provider "aws" {
      region  = "eu-west-1"
-     profile = "iam-profile"
+     profile = "serverless-deployer"
   }
   terraform {
   required_providers {
@@ -26,7 +26,7 @@ remote_state {
     bucket                  = "euw1-rke-terraform-state"
     key                     = "${path_relative_to_include()}/terraform.tfstate"
     dynamodb_table          = "euw1-rke-terraform-lock-table"
-    profile                 = "iam-profile"
+    profile                 = "serverless-deployer"
     region                  = "eu-west-1"
   }
 }

@@ -29,9 +29,9 @@ module "control_plane_for_kubernetes_cluster" {
   ]
   target_group_arn = module.vpc_for_kubernetes_cluster.target_group_arn
   environment = var.environment
-  desired_capacity = 1
+  desired_capacity = 3
   max_size = 6
-  min_size = 1
+  min_size = 3
   user_data = "master_userdata.sh"
   key_name = var.key_name
 }
@@ -55,9 +55,9 @@ module "worker_nodes_for_kubernetes_cluster" {
     module.vpc_for_kubernetes_cluster.data_plane_sg_security_group_id
   ]
   environment = var.environment
-  desired_capacity = 1
+  desired_capacity = 3
   max_size = 6
-  min_size = 1
+  min_size = 3
   user_data = "worker_userdata.sh"
   key_name = var.key_name
 }
