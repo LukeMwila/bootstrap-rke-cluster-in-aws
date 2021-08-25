@@ -30,7 +30,7 @@ sudo swapoff -a
 # Confirm that docker group has been created on system
 sudo groupadd docker
 
-# Add lukas current system user to the Docker group, as well as the ec2-user user
+# Add current system user to the Docker group, as well as the ec2-user user
 sudo gpasswd -a $USER docker
 sudo usermod -a -G docker ec2-user
 grep /etc/group -e "docker"
@@ -57,7 +57,7 @@ sudo sysctl --system
 lsmod | grep br_netfilter
 
 # Download cluster yaml file from S3 bucket
-aws s3 cp s3://euw1-rke-cluster-config/cluster.yml ./
+aws s3 cp s3://your-rke-cluster-config-bucket/cluster.yml ./
 
 # Get the value of the existing number of nodes listed in the config file and use that
 # number for creating a new node listing in the array
@@ -69,4 +69,4 @@ HOSTNAME="$(curl http://169.254.169.254/latest/meta-data/local-ipv4)" NUMBER_OF_
 ' ./cluster.yml
 
 # Upload the cluster.yml file to the S3 bucket
-aws s3 cp ./cluster.yml s3://euw1-rke-cluster-config
+aws s3 cp ./cluster.yml s3://your-rke-cluster-config-bucket

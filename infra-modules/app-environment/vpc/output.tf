@@ -26,10 +26,10 @@ output public_subnet_security_group_id {
   value = aws_security_group.public_sg.id
 }
 
-output nlb_id {
+/* output nlb_id {
   value = aws_lb.nlb.id
-}
+} */
 
-output target_group_arn {
+/* output target_group_arn {
   value = aws_lb_target_group.nlb_tg.arn
-}
+} */

@@ -51,7 +51,7 @@ resource "aws_autoscaling_group" "asg" {
   min_size           = var.min_size
   force_delete       = true
   vpc_zone_identifier = var.private_subnet_ids
-  target_group_arns = [var.target_group_arn]
+  # target_group_arns = [var.target_group_arn]
   launch_template {
     id      = aws_launch_template.launch_template.id
     version = "$Latest"

@@ -39,10 +39,10 @@ variable "public_subnet_tag_name" {
   description = "Name tag for the public subnet"
 }
 
-variable "nlb_name" {
+/* variable "nlb_name" {
   type = string
   description = "The name of the NLB"
-}
+} */
 
 variable "environment" {
   type        = string

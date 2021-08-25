@@ -13,9 +13,9 @@ sudo ./aws/install
 sleep 4m 30s
 
 # Download cluster config file and ssh key from S3 bucket
-aws s3 cp s3://euw1-rke-cluster-config/cluster.yml ./
-aws s3 cp s3://euw1-rke-cluster-config/lukas-rke.pem ./
-chmod 400 ./lukas-rke.pem
+aws s3 cp s3://your-rke-cluster-config-bucket/cluster.yml ./
+aws s3 cp s3://your-rke-cluster-config-bucket/ec2-ssh-key.pem ./
+chmod 400 ./ec2-ssh-key.pem
 
 # Download RKE
 curl -LO https://github.com/rancher/rke/releases/download/v1.2.11/rke_linux-amd64 && chmod a+x ./rke_linux-amd64

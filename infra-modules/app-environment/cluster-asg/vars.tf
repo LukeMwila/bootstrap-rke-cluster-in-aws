@@ -76,10 +76,10 @@ variable launch_template_security_group_ids {
   description = "Launch template SGs"
 }
 
-variable "target_group_arn" {
+/* variable "target_group_arn" {
   type        = string
   description = "List of target groups"
-}
+} */
 
 variable "cluster_name" {
   description = "The name of the cluster"

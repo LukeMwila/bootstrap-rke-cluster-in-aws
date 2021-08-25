@@ -1,4 +1,4 @@
-# Create NLB
+/* # Create NLB
 resource "aws_lb" "nlb" {
   name               = var.nlb_name
   internal           = false
@@ -31,4 +31,4 @@ resource "aws_lb_listener" "nlb_listener" {
     target_group_arn = aws_lb_target_group.nlb_tg.id
     type             = "forward"
   }
-}
+} */

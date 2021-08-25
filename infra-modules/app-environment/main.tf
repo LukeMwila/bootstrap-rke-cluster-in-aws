@@ -4,7 +4,7 @@ module "vpc_for_kubernetes_cluster" {
   cluster_name = var.cluster_name
   vpc_tag_name = "${var.cluster_name}-vpc"
   route_table_tag_name = "${var.cluster_name}-rt"
-  nlb_name = "${var.cluster_name}-nlb"
+  # nlb_name = "${var.cluster_name}-nlb"
   region = var.region
   environment = var.environment
 }
@@ -27,7 +27,7 @@ module "control_plane_for_kubernetes_cluster" {
     module.vpc_for_kubernetes_cluster.control_plane_sg_security_group_id,
     # module.vpc_for_kubernetes_cluster.public_subnet_security_group_id
   ]
-  target_group_arn = module.vpc_for_kubernetes_cluster.target_group_arn
+  # target_group_arn = module.vpc_for_kubernetes_cluster.target_group_arn
   environment = var.environment
   desired_capacity = 3
   max_size = 6
