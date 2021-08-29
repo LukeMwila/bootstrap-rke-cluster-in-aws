@@ -53,6 +53,11 @@ aws s3 cp ./ec2-ssh-key.pem s3://your-rke-cluster-config-bucket
 
 *Take note of the name you give to this SSH Key because you will need to provide it as a variable value in the sensitive.tfvars file later.*
 
+### Subscribe to openSUSE Leap in AWS Marketplace
+The nodes in this project are provision with openSUSE Leap 15.2. In order to use this OS, you need to subscribe to it [here](https://aws.amazon.com/marketplace/pp/prodview-wn2xje27ui45o). You will need to be logged into the AWS account that you will use to provision this infrastructure. It is available for the *free tier* in AWS.
+
+![openSUSE Leap in AWS Marketplace](./openSUSE-Leap-AWS.png)
+
 ### Remote Backend State Configuration
 To configure remote backend state for your infrastructure, create an S3 bucket and DynamoDB table before running *terragrunt init*. You can populate the parent terragrunt configuration file (terragrunt.hcl) in the root directory with your respective values for the bucket name (your-terraform-state-bucket) and table name (your-terraform-lock-table). In this same config file, you can update the region and aws profile name.
 
@@ -79,6 +84,29 @@ terragrunt init
 terragrunt plan
 terragrunt apply -auto-approve
 ```
+
+To create the infrastructure for separate environments, create separate folders in `infra-live` such as `infra-live/test/app-environment` and `infra-live/prod/app-environment` with the same terragrunt.tf file located in `infra-live/dev/app-environment`.
+
+Modify the Terragrunt config file input block for other environments to the relevant name:
+### Dev
+```
+inputs = {
+  environment    = "dev"
+}
+```
+### Test
+```
+inputs = {
+  environment    = "test"
+}
+```
+### Prod
+```
+inputs = {
+  environment    = "prod"
+}
+```
+
 *Remember to update the secret name when creating the infrastructure for additional environments.*
 
 To destroy the infrastructure run the `terrargunt destroy` command from the same location. 
