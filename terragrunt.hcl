@@ -13,7 +13,7 @@ generate "provider" {
       version = "2.57"
     }
 }
-  required_version = "~> 1.0.4"
+  required_version = "~> 1.1.2"
   backend "s3" {}
   }
 EOF
